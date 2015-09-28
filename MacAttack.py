@@ -7,9 +7,14 @@ Data = [
     0x76, 0x65, 0x20, 0x74, 0x68, 0x65, 0x6d, 0x20, 0x61, 0x6c, 0x6c, 0x20, 0x61, 0x20, 0x30
 ]
 
-data = " Except Russell".encode('hex')  
-
+selection = raw_input("Extension message:  ")
+print("Using ' Except Russell")
+if selection == "":
+    data = " Except Russell".encode('hex')
+else:
+    data = selection.encode('hex')
 import struct
+
 
 def _left_rotate(n, b):
     return ((n << b) | (n >> (32 - b))) & 0xffffffff
@@ -23,7 +28,7 @@ def sha1(message):
     Returns:
         A hex SHA-1 digest of the input message.
     """
-    #Initializing variables to be the digest of our message
+    # Initializing variables to be the digest of our message
     # Initialize variables:
     h0 = 0xf4b645e8
     h1 = 0x9faaec2f
@@ -90,19 +95,19 @@ def sha1(message):
     # Produce the final hash value (big-endian):
     return '%08x%08x%08x%08x%08x' % (h0, h1, h2, h3, h4)
 
+
 originalMessage = "4e6f206f6e652068617320636f6d706c65746564206c6162203220736f2067697665207468656d20616c6c20612030"
-#This is adding a 1 bit at the beginning of the padding
+# This is adding a 1 bit at the beginning of the padding
 originalMessage += "80"
-#We stop at 500 so that we have 8 bits to add the length of the key to the end
+# We stop at 500 so that we have 8 bits to add the length of the key to the end
 while len(originalMessage) * 4 % 512 != 504:
     originalMessage += "0"
-#This is adding the length of the key to the padding 128 bits
+# This is adding the length of the key to the padding 128 bits
 originalMessage += "80"
 
 newMessage = originalMessage + data
-print(newMessage)
-
-print(sha1(data))
+print("Msg:  " + newMessage)
+print("New Digest:  " + sha1(data))
 
 # if __name__ == '__main__':
 #     # Imports required for command line parsing. No need for these elsewhere
