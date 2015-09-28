@@ -29,12 +29,17 @@ def sha1(message):
         A hex SHA-1 digest of the input message.
     """
     # Initializing variables to be the digest of our message
+    # f4b645e8
+    # 9faaec2f
+    # f8e443c5
+    # 95009c16
+    # dbdfba4b
     # Initialize variables:
-    h0 = 0xf4b645e8
-    h1 = 0x9faaec2f
-    h2 = 0xf8e443c5
-    h3 = 0x95009c16
-    h4 = 0xdbdfba4b
+    h0 = 0xF4B645E8
+    h1 = 0x9FAAEC2F
+    h2 = 0xF8E443C5
+    h3 = 0x95009C16
+    h4 = 0xDBDFBA4B
 
     message
     # Pre-processing:
@@ -99,7 +104,7 @@ def sha1(message):
 originalMessage = "4e6f206f6e652068617320636f6d706c65746564206c6162203220736f2067697665207468656d20616c6c20612030"
 # This is adding a 1 bit at the beginning of the padding
 originalMessage += "80"
-# We stop at 500 so that we have 8 bits to add the length of the key to the end
+# We stop at 512 so that we have 8 bits to add the length of the key to the end
 while len(originalMessage) * 4 % 512 != 504:
     originalMessage += "0"
 # This is adding the length of the key to the padding 128 bits
