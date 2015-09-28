@@ -34,6 +34,7 @@ def sha1(message):
     # f8e443c5
     # 95009c16
     # dbdfba4b
+
     # Initialize variables:
     h0 = 0xF4B645E8
     h1 = 0x9FAAEC2F
@@ -41,10 +42,18 @@ def sha1(message):
     h3 = 0x95009C16
     h4 = 0xDBDFBA4B
 
+    # h0 = 0xe5e9fa1b
+    # h1 = 0xa31ecd1a
+    # h2 = 0xe84f75ca
+    # h3 = 0xaa474f3a
+    # h4 = 0x663f05f4
+
     message
-    # Pre-processing:
-    original_byte_len = len(message)
-    original_bit_len = original_byte_len * 8
+    # # Pre-processing:
+    original_bit_len = len(message) * 8 + 1024
+    original_byte_len = original_bit_len / 8
+    # original_byte_len = len(message)
+    # original_bit_len = original_byte_len * 8
     # append the bit '1' to the message
     message += b'\x80'
 
@@ -113,7 +122,7 @@ originalMessage += "80"
 newMessage = originalMessage + data
 print("Msg:  " + newMessage)
 print("New Digest:  " + sha1(data))
-
+print(sha1("7365637265748000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003020746861742063616e20626520736861726564"))
 # if __name__ == '__main__':
 #     # Imports required for command line parsing. No need for these elsewhere
 #     import argparse
