@@ -93,18 +93,16 @@ def sha1(message):
 originalMessage = "4e6f206f6e652068617320636f6d706c65746564206c6162203220736f2067697665207468656d20616c6c20612030"
 #This is adding a 1 bit at the beginning of the padding
 originalMessage += "80"
-#We stop at 500 so that we have 12 bits to add the length of the key to the end
-while len(originalMessage) * 4 % 512 != 500:
+#We stop at 500 so that we have 8 bits to add the length of the key to the end
+while len(originalMessage) * 4 % 512 != 504:
     originalMessage += "0"
-#This is adding the length of the key to the padding
-originalMessage += "400"
+#This is adding the length of the key to the padding 128 bits
+originalMessage += "80"
 
 newMessage = originalMessage + data
 print(newMessage)
-print(newMessage.decode('hex'))
-sha1(data)
 
-print(sha1(" Except Russell"))
+print(sha1(data))
 
 # if __name__ == '__main__':
 #     # Imports required for command line parsing. No need for these elsewhere
