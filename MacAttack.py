@@ -8,7 +8,7 @@ Data = [
 ]
 
 selection = raw_input("Extension message:  ")
-print("Using ' Except Russell")
+print("Using ' Except Russell'")
 if selection == "":
     data = " Except Russell".encode('hex')
 else:
